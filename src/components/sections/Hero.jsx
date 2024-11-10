@@ -150,17 +150,17 @@ const ResumeButton = styled.a`
   font-size: 20px;
   color: white;
   transition: all 0.4s ease-in-out;
-  
+
   &:hover {
     transform: scale(1.05);
     filter: brightness(1.1);
-    box-shadow: 20px 20px 60px #1F2634;
-  }    
-  
+    box-shadow: 20px 20px 60px #1f2634;
+  }
+
   @media (max-width: 640px) {
     padding: 12px 0;
     font-size: 18px;
-  } 
+  }
 `;
 
 const Img = styled.img`
@@ -170,12 +170,57 @@ const Img = styled.img`
   height: 100%;
   max-width: 400px;
   max-height: 400px;
-  border: 2px solid ${({ theme }) => theme.primary};
+  border: 3px solid ${({ theme }) => theme.primary};
   object-fit: cover;
-  
+  box-shadow: 0 0 20px ${({ theme }) => theme.primary + "40"};
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 30px ${({ theme }) => theme.primary + "60"};
+  }
+
   @media (max-width: 640px) {
     max-width: 280px;
     max-height: 280px;
+  }
+`;
+
+const ImgContainer = styled.div`
+  position: relative;
+  border-radius: 50%;
+  padding: 8px;
+  background: linear-gradient(
+    225deg,
+    ${({ theme }) => theme.primary + "20"} 0%,
+    ${({ theme }) => theme.primary + "60"} 100%
+  );
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 50%;
+    background: linear-gradient(
+      225deg,
+      ${({ theme }) => theme.primary} 0%,
+      transparent 50%,
+      ${({ theme }) => theme.primary} 100%
+    );
+    z-index: -1;
+    animation: rotate 4s linear infinite;
+  }
+
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
   }
 `;
 
@@ -217,14 +262,14 @@ const Hero = () => {
             <HeroLeftContainer>
               <motion.div {...headTextAnimation}>
                 <Title>
-                  Hi, I am <br /> {Bio.name || 'Kriti Raj'}
+                  Hi, I am <br /> {Bio.name || "Kriti Raj"}
                 </Title>
                 <TextLoop>
                   I am a
                   <Span>
                     <Typewriter
                       options={{
-                        strings: Bio.roles || ['Developer'],
+                        strings: Bio.roles || ["Developer"],
                         autoStart: true,
                         loop: true,
                       }}
@@ -237,8 +282,8 @@ const Hero = () => {
                 <SubTitle>{Bio.description}</SubTitle>
               </motion.div>
 
-              <ResumeButton 
-                href={Bio.resume} 
+              <ResumeButton
+                href={Bio.resume}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="View Resume"
@@ -256,11 +301,9 @@ const Hero = () => {
                     speed: 450,
                   }}
                 >
-                  <Img 
-                    src={HeroImg} 
-                    alt="Kriti Raj"
-                    loading="eager"
-                  />
+                  <ImgContainer>
+                    <Img src={HeroImg} alt="Kriti Raj" loading="eager" />
+                  </ImgContainer>
                 </Tilt>
               </motion.div>
             </HeroRightContainer>
