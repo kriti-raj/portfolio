@@ -1,23 +1,79 @@
+import { StrictMode } from 'react';
+import styled, { ThemeProvider } from "styled-components";
+import { BrowserRouter } from "react-router-dom";
+import emailjs from '@emailjs/browser';
 
-import About from './components/About'
-import Contact from './components/Contact'
-import Footer from './components/Footer'
-import Hero from './components/Hero'
-import Navbar from './components/Navbar'
-import Projects from './components/Projects'
+// Components
+import Navbar from "./components/Navbar";
+import Hero from "./components/sections/Hero";
+import Skills from "./components/sections/Skills";
+import Education from "./components/sections/Education";
+import Projects from "./components/sections/Projects";
+import Contact from "./components/sections/Contact";
+import Footer from "./components/sections/Footer";
+import StarCanvas from "./components/canvas/Stars";
 
-function App() {
+// Theme
+import { darkTheme } from "./utils/Themes";
 
-  return (
-    <div>
-        <Navbar />
-        <Hero />
-        <About />
-        <Projects />
-        <Contact />
-        <Footer />
-    </div>
-  )
+// Initialize EmailJS
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+if (!EMAILJS_PUBLIC_KEY) {
+  console.warn('EmailJS public key is not set in environment variables');
+} else {
+  emailjs.init(EMAILJS_PUBLIC_KEY);
 }
 
-export default App
+const Body = styled.div`
+  background-color: ${({ theme }) => theme.bg};
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+`;
+
+const Wrapper = styled.div`
+  padding-bottom: 100px;
+  background: linear-gradient(
+      38.73deg,
+      rgba(204, 0, 187, 0.15) 0%,
+      rgba(201, 32, 184, 0) 50%
+    ),
+    linear-gradient(
+      141.27deg,
+      rgba(0, 70, 209, 0) 50%,
+      rgba(0, 70, 209, 0.15) 100%
+    );
+  width: 100%;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 30% 98%, 0 100%);
+`;
+
+function App() {
+  return (
+    <StrictMode>
+      <ThemeProvider theme={darkTheme}>
+        <BrowserRouter>
+          <Navbar />
+          <Body>
+            <StarCanvas />
+            <main>
+              <Hero />
+              <Wrapper>
+                <Skills />
+                {/* <Experience /> */}
+              </Wrapper>
+              <Projects />
+              <Wrapper>
+                <Education />
+                <Contact />
+              </Wrapper>
+              <Footer />
+            </main>
+          </Body>
+        </BrowserRouter>
+      </ThemeProvider>
+    </StrictMode>
+  );
+}
+
+export default App;

@@ -1,0 +1,52 @@
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* Reset defaults */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* HTML defaults */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Body defaults */
+body {
+  margin: 0 !important;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 80px;
+}
+
+::-webkit-scrollbar-track {
+  background: #222A35;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #575C66;
+  border-radius: 6px;
+  transition: background 0.2s ease-in-out;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #626970;
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #575C66 #222A35;
+}
