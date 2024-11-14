@@ -103,8 +103,8 @@ const ContactButton = styled.input`
   width: 100%;
   text-decoration: none;
   text-align: center;
-  background: ${({ disabled }) => 
-    disabled ? '#666' : 'hsla(271, 100%, 50%, 1)'};
+  background: ${({ disabled }) =>
+    disabled ? "#666" : "hsla(271, 100%, 50%, 1)"};
   padding: 13px 16px;
   margin-top: 2px;
   border-radius: 12px;
@@ -112,12 +112,12 @@ const ContactButton = styled.input`
   color: ${({ theme }) => theme.text_primary};
   font-size: 18px;
   font-weight: 600;
-  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
+  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   transition: all 0.2s ease-in-out;
-  
+
   &:hover {
-    background: ${({ disabled }) => 
-      disabled ? '#666' : 'hsla(271, 100%, 60%, 1)'};
+    background: ${({ disabled }) =>
+      disabled ? "#666" : "hsla(271, 100%, 60%, 1)"};
   }
 `;
 
@@ -144,14 +144,22 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!form.current) return;
-    
+
     setLoading(true);
     setSuccess(false);
     setError("");
 
-    const { VITE_EMAILJS_SERVICE_ID, VITE_EMAILJS_TEMPLATE_ID, VITE_EMAILJS_PUBLIC_KEY } = import.meta.env;
-    
-    if (!VITE_EMAILJS_SERVICE_ID || !VITE_EMAILJS_TEMPLATE_ID || !VITE_EMAILJS_PUBLIC_KEY) {
+    const {
+      VITE_EMAILJS_SERVICE_ID,
+      VITE_EMAILJS_TEMPLATE_ID,
+      VITE_EMAILJS_PUBLIC_KEY,
+    } = import.meta.env;
+
+    if (
+      !VITE_EMAILJS_SERVICE_ID ||
+      !VITE_EMAILJS_TEMPLATE_ID ||
+      !VITE_EMAILJS_PUBLIC_KEY
+    ) {
       setError("Email service not configured properly");
       setLoading(false);
       return;
@@ -164,14 +172,13 @@ const Contact = () => {
         form.current,
         VITE_EMAILJS_PUBLIC_KEY
       );
-      
+
       setSuccess(true);
       form.current.reset();
-      
+
       setTimeout(() => setSuccess(false), 5000);
-      
     } catch (error) {
-      setError(error.text || "Failed to send message. Please try again.");
+      setError(error.message || "Failed to send message. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -220,11 +227,13 @@ const Contact = () => {
           />
           {error && <ErrorMessage role="alert">{error}</ErrorMessage>}
           {success && (
-            <SuccessMessage role="alert">Message sent successfully!</SuccessMessage>
+            <SuccessMessage role="alert">
+              Message sent successfully!
+            </SuccessMessage>
           )}
-          <ContactButton 
-            type="submit" 
-            value={loading ? "Sending..." : "Send"} 
+          <ContactButton
+            type="submit"
+            value={loading ? "Sending..." : "Send"}
             disabled={loading}
           />
         </ContactForm>
