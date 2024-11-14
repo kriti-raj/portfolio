@@ -366,6 +366,17 @@ export const projects = [
     demo: "https://hotel-scaler-frontend.vercel.app/",
   },
   {
+    title: "Expense Tracker",
+    date: "Jul 2024 - Jul 2024",
+    description:
+      "An Expense Tracker made with React Js, Tailwind CSS, and Local Storage.",
+    image:
+      "https://i.ibb.co/y4hWr21/Screenshot-2024-11-14-161201.png",
+    tags: ["React Js", "Tailwind CSS", "Local Storage"],
+    github: "https://github.com/kriti-raj/Expense-Tracker",
+    demo: "https://tracktheexpenses.vercel.app/",
+  },
+  {
     title: "Kanban Quicksell",
     date: "Oct 2024 - Oct 2024",
     description:
@@ -409,17 +420,6 @@ export const projects = [
     tags: ["HTML", "CSS", "JavaScript", "Open Weather API"],
     github: "https://github.com/kriti-raj/Weather-Website",
     demo: "https://kriti-raj.github.io/Weather-Website/",
-  },
-  {
-    title: "Expense Tracker",
-    date: "Jul 2024 - Jul 2024",
-    description:
-      "An Expense Tracker made with React Js, Tailwind CSS, and Local Storage.",
-    image:
-      "https://i.ibb.co/ZW8L6xF/Screenshot-2024-11-10-201829.png",
-    tags: ["React Js", "Tailwind CSS", "Local Storage"],
-    github: "https://github.com/kriti-raj/Budget-Manager-App",
-    demo: "https://budget-manager-app.vercel.app/",
   },
   {
     title: "Modern Trends in Microbiology",

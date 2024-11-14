@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import styled from "styled-components";
+import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 
 const Card = styled.div`
   width: 330px;
@@ -45,6 +46,13 @@ const Tag = styled.span`
   background-color: ${({ theme }) => theme.primary + 15};
   padding: 2px 8px;
   border-radius: 10px;
+  transition: all 0.2s ease-in-out;
+  cursor: default;
+
+  &:hover {
+    transform: scale(1.05);
+    background-color: ${({ theme }) => theme.primary + 25};
+  }
 `;
 
 const Details = styled.div`
@@ -106,19 +114,19 @@ const Button = styled.a`
   color: ${({ theme }) => theme.text_primary};
   padding: 12px 16px;
   border-radius: 8px;
-  background-color: ${({ theme, variant }) => 
-    variant === 'primary' 
-      ? theme.primary + 15
-      : theme.card};
+  background-color: ${({ theme, variant }) =>
+    variant === "primary" ? theme.primary + 15 : theme.card};
   border: 1.5px solid ${({ theme }) => theme.primary};
   text-decoration: none;
   transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 
   &:hover {
-    background-color: ${({ theme, variant }) => 
-      variant === 'primary' 
-        ? theme.primary + 25
-        : theme.card + 25};
+    background-color: ${({ theme, variant }) =>
+      variant === "primary" ? theme.primary + 25 : theme.card + 25};
     transform: translateY(-2px);
   }
 
@@ -133,11 +141,11 @@ const ProjectCard = ({ project }) => {
 
   return (
     <Card>
-      <Image 
-        src={project.image} 
-        alt={project.title || 'project image'}
+      <Image
+        src={project.image}
+        alt={project.title || "project image"}
         onError={(e) => {
-          e.target.src = '/fallback-project-image.png';
+          e.target.src = "/fallback-project-image.png";
         }}
       />
       <Details>
@@ -152,22 +160,18 @@ const ProjectCard = ({ project }) => {
       </Details>
       <ButtonGroup>
         {project.github && (
-          <Button 
-            href={project.github} 
+          <Button
+            href={project.github}
             target="_blank"
             rel="noopener noreferrer"
             variant="primary"
           >
-            View Code
+            <FaGithub /> Code
           </Button>
         )}
         {project.demo && (
-          <Button 
-            href={project.demo} 
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Live Demo
+          <Button href={project.demo} target="_blank" rel="noopener noreferrer">
+            Demo <FaExternalLinkAlt />
           </Button>
         )}
       </ButtonGroup>

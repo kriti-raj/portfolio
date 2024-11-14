@@ -140,9 +140,7 @@ const Navbar = () => {
   return (
     <Nav>
       <NavbarContainer>
-        <NavLogo to="/">
-          {Bio.name || 'Portfolio'}
-        </NavLogo>
+        <NavLogo to="/">{Bio.name || "Portfolio"}</NavLogo>
 
         <NavItems>
           <NavLink href="#about">About</NavLink>
@@ -152,8 +150,8 @@ const Navbar = () => {
         </NavItems>
 
         <ButtonContainer>
-          <GithubButton 
-            href={Bio.github} 
+          <GithubButton
+            href={Bio.github}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -161,7 +159,7 @@ const Navbar = () => {
           </GithubButton>
         </ButtonContainer>
 
-        <MobileIcon 
+        <MobileIcon
           onClick={toggleMenu}
           aria-label="Toggle menu"
           aria-expanded={isOpen}
@@ -170,10 +168,18 @@ const Navbar = () => {
         </MobileIcon>
 
         <MobileMenu $isOpen={isOpen}>
-          <NavLink onClick={toggleMenu} href="#about">About</NavLink>
-          <NavLink onClick={toggleMenu} href="#skills">Skills</NavLink>
-          <NavLink onClick={toggleMenu} href="#projects">Projects</NavLink>
-          <NavLink onClick={toggleMenu} href="#education">Education</NavLink>
+          <NavLink onClick={toggleMenu} href="#about">
+            About
+          </NavLink>
+          <NavLink onClick={toggleMenu} href="#skills">
+            Skills
+          </NavLink>
+          <NavLink onClick={toggleMenu} href="#projects">
+            Projects
+          </NavLink>
+          <NavLink onClick={toggleMenu} href="#education">
+            Education
+          </NavLink>
           <GithubButton
             href={Bio.github}
             target="_blank"
