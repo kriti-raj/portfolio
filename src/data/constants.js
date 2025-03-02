@@ -9,7 +9,7 @@ export const Bio = {
     "I am a motivated and versatile individual, always eager to take on new challenges. With a passion for learning I am dedicated to delivering high-quality results. With a positive attitude and a growth mindset, I am ready to make a meaningful contribution and achieve great things.",
   github: "https://github.com/kriti-raj",
   resume:
-    "https://drive.google.com/file/d/1NcwKEvN9eCTMXT2oG3Wa79qENiXxza9g/view?usp=sharing",
+    "https://drive.google.com/file/d/1Y_96ve-JmAjzOs0HYbrIKiGUGGts0ZQF/view?usp=sharing",
   linkedin: "https://www.linkedin.com/in/kritiraj19/",
   twitter: "https://x.com/kriti___raj",
   insta: "https://www.instagram.com/kriti___raj/",
